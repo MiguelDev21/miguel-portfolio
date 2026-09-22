@@ -33,6 +33,23 @@ export const skills = {
       "MVC Architecture",
     ],
   },
+  mobile: {
+    title: {
+      es: "Desarrollo Móvil",
+      en: "Mobile Development",
+    },
+    items: [
+      "React Native",
+      "Swift",
+      "SwiftUI",
+      "Xcode",
+      "iOS 27 (Liquid Glass)",
+      "Kotlin",
+      "Android Studio",
+      "Java (Android)",
+      "SQLite",
+    ],
+  },
   database: {
     title: {
       es: "Bases de Datos",
@@ -44,6 +61,36 @@ export const skills = {
       "MongoDB",
       "Database Design",
       "Query Optimization",
+    ],
+  },
+  data: {
+    title: {
+      es: "Análisis de Datos",
+      en: "Data Analysis",
+    },
+    items: [
+      "Power BI",
+      "DAX",
+      "Advanced Excel",
+      "SQL Analytics",
+      "ETL",
+      "Dashboards",
+      "Data Storytelling",
+    ],
+  },
+  ai: {
+    title: {
+      es: "Automatización con IA",
+      en: "AI Automation",
+    },
+    items: [
+      "AI Agents",
+      "LangChain",
+      "n8n",
+      "Claude API",
+      "OpenAI API",
+      "Prompt Engineering",
+      "Agentic Workflows",
     ],
   },
   devops: {
@@ -104,6 +151,21 @@ export const expertise = {
       icon: "code",
     },
     {
+      title: "Análisis de Datos",
+      description: "Dashboards y reportes con Power BI, modelado DAX y análisis SQL para apoyar decisiones de negocio.",
+      icon: "chart",
+    },
+    {
+      title: "Automatización con IA",
+      description: "Diseño de agentes y workflows con IA (Claude, LangChain, n8n) para automatizar procesos repetitivos.",
+      icon: "sparkles",
+    },
+    {
+      title: "Desarrollo Móvil",
+      description: "Apps para iOS y Android, nativas (Swift/SwiftUI, Kotlin/Java) o multiplataforma con React Native, según lo que el problema requiera.",
+      icon: "device",
+    },
+    {
       title: "Liderazgo Técnico",
       description: "Coordinación de equipos, gestión de proyectos y toma de decisiones técnicas para soluciones escalables.",
       icon: "users",
@@ -124,6 +186,21 @@ export const expertise = {
       title: "Full Stack Development",
       description: "Complete experience in frontend and backend development, from architecture to production deployment.",
       icon: "code",
+    },
+    {
+      title: "Data Analysis",
+      description: "Dashboards and reports with Power BI, DAX modeling, and SQL analysis to support business decisions.",
+      icon: "chart",
+    },
+    {
+      title: "AI Automation",
+      description: "Designing AI agents and workflows (Claude, LangChain, n8n) to automate repetitive processes.",
+      icon: "sparkles",
+    },
+    {
+      title: "Mobile Development",
+      description: "Apps for iOS and Android, native (Swift/SwiftUI, Kotlin/Java) or cross-platform with React Native, depending on what the problem calls for.",
+      icon: "device",
     },
     {
       title: "Technical Leadership",
@@ -147,7 +224,7 @@ export const expertise = {
 export const metrics = {
   es: {
     experience: {
-      value: "3+",
+      value: "4+",
       label: "Años de experiencia",
     },
     projects: {
@@ -155,7 +232,7 @@ export const metrics = {
       label: "Proyectos completados",
     },
     technologies: {
-      value: "20+",
+      value: "25+",
       label: "Tecnologías dominadas",
     },
     sectors: {
@@ -165,7 +242,7 @@ export const metrics = {
   },
   en: {
     experience: {
-      value: "3+",
+      value: "4+",
       label: "Years of experience",
     },
     projects: {
@@ -173,7 +250,7 @@ export const metrics = {
       label: "Projects completed",
     },
     technologies: {
-      value: "20+",
+      value: "25+",
       label: "Technologies mastered",
     },
     sectors: {

@@ -5,12 +5,13 @@ export const education = [
       en: "Software Engineering",
     },
     institution: "Fundación Escuela Tecnológica de Neiva - Jesús Oviedo Pérez",
-    period: "Ago 2024 - Actualidad",
+    period: "Ago 2024 - Sep 2026",
     status: {
-      es: "10º Semestre - En curso",
-      en: "10th Semester - In progress",
+      es: "Completado",
+      en: "Completed",
     },
     location: "Neiva, Huila",
+    credential: "SNIES 103582-227",
     description: {
       es: "Formación profesional en ingeniería de software con énfasis en desarrollo full stack, arquitectura de sistemas y gestión de proyectos.",
       en: "Professional training in software engineering with emphasis on full stack development, systems architecture, and project management.",
@@ -66,7 +67,7 @@ export const languages = {
     },
     {
       language: "Inglés",
-      level: "Intermedio",
+      level: "Intermedio (B1)",
       proficiency: 60,
     },
   ],
@@ -78,7 +79,7 @@ export const languages = {
     },
     {
       language: "English",
-      level: "Intermediate",
+      level: "Intermediate (B1)",
       proficiency: 60,
     },
   ],

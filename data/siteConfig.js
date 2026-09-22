@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "Miguel Ángel Bahamón Rocha",
   shortName: "Miguel.Dev",
   description: {
-    es: "Ingeniero de Software Full Stack con experiencia en desarrollo web, liderazgo técnico y gestión de proyectos. Especializado en React, Node.js y arquitecturas escalables.",
-    en: "Full Stack Software Engineer with experience in web development, technical leadership, and project management. Specialized in React, Node.js, and scalable architectures.",
+    es: "Ingeniero de Software Full Stack, desarrollador móvil (iOS/Android), Analista de Datos y especialista en automatización con agentes de IA.",
+    en: "Full Stack Software Engineer, mobile developer (iOS/Android), Data Analyst, and AI agent automation specialist.",
   },
   url: "https://migueldev.com", // Actualizar con tu dominio real
   author: {
@@ -15,7 +15,7 @@ export const siteConfig = {
     },
   },
   social: {
-    github: "https://github.com/miguelba18",
+    github: "https://github.com/MiguelDev21",
     linkedin: "https://www.linkedin.com/in/miguel-angel-bahamon-rocha",
     email: "mailto:miguel061010@hotmail.com",
     phone: "tel:+573132140833",
@@ -29,7 +29,7 @@ export const siteConfig = {
 export const socialLinks = [
   {
     name: "GitHub",
-    url: "https://github.com/miguelba18",
+    url: "https://github.com/MiguelDev21",
     icon: "github",
     color: "#181717",
   },
@@ -40,7 +40,10 @@ export const socialLinks = [
     color: "#0A66C2",
   },
   {
-    name: "Email",
+    name: {
+      es: "Correo electrónico",
+      en: "Email",
+    },
     url: "mailto:miguel061010@hotmail.com",
     icon: "mail",
     color: "#EA4335",
@@ -60,21 +63,21 @@ export const navigation = {
   es: [
     { name: "Inicio", href: "#hero" },
     { name: "Sobre mí", href: "#about" },
-    { name: "Experiencia", href: "#experience" },
-    { name: "Proyectos", href: "#projects" },
     { name: "Habilidades", href: "#skills" },
-    { name: "Certificaciones", href: "#certifications" },
+    { name: "Proyectos", href: "#projects" },
+    { name: "Experiencia", href: "#experience" },
     { name: "Educación", href: "#education" },
+    { name: "Certificaciones", href: "#certifications" },
     { name: "Contacto", href: "#contact" },
   ],
   en: [
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Certifications", href: "#certifications" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
     { name: "Education", href: "#education" },
+    { name: "Certifications", href: "#certifications" },
     { name: "Contact", href: "#contact" },
   ],
 };
@@ -111,7 +114,7 @@ export const highlights = {
   es: [
     {
       label: "Roles",
-      value: "Full Stack · Project Manager · QA",
+      value: "Full Stack · Mobile (iOS/Android) · Analista de Datos · PM · QA · Automatización IA",
       icon: "user",
     },
     {
@@ -133,7 +136,7 @@ export const highlights = {
   en: [
     {
       label: "Roles",
-      value: "Full Stack · Project Manager · QA",
+      value: "Full Stack · Mobile (iOS/Android) · Data Analyst · PM · QA · AI Automation",
       icon: "user",
     },
     {
@@ -157,20 +160,22 @@ export const highlights = {
 export const aboutContent = {
   es: {
     title: "Sobre mí",
-    subtitle: "Ingeniero de Software en formación con experiencia real en desarrollo web, liderazgo técnico y gestión de proyectos.",
+    subtitle: "Ingeniero de Software con experiencia real construyendo productos: web, móvil, datos y automatización con IA.",
     paragraphs: [
-      "He trabajado desarrollando aplicaciones web modernas para entidades gubernamentales como la DIAN, empresas del sector salud y clientes freelance, participando activamente en todo el ciclo de vida del software.",
-      "Mi experiencia como Full Stack Developer, Project Manager y QA me permite tener una visión integral de los proyectos, tomar mejores decisiones técnicas y entregar productos más sólidos.",
-      "Me enfoco en escribir código limpio, construir arquitecturas mantenibles y crear soluciones que realmente aporten valor al negocio y al usuario final.",
+      "Soy Ingeniero de Software con más de 4 años de experiencia técnica, construyendo software para entidades gubernamentales como la DIAN, empresas del sector salud y clientes freelance — participando en todo el ciclo de vida del producto, de punta a punta.",
+      "Trabajo full stack con React, Next.js y Node/NestJS, pero no me quedo ahí: desarrollo apps nativas para iOS (Swift, SwiftUI, Xcode) y Android (Kotlin, Java, Android Studio), diseño dashboards y análisis de datos con Power BI, y automatizo procesos de negocio con agentes de IA. Resuelvo cada problema con la herramienta que realmente le sirve, sin encasillarme en una sola pila tecnológica.",
+      "Mi paso por roles de Project Manager y QA me da una visión integral: entiendo el negocio, coordino equipos y también pruebo lo que construyo. Esa mezcla es lo que me permite tomar mejores decisiones técnicas y entregar productos más sólidos.",
+      "Me enfoco en escribir código limpio, construir arquitecturas mantenibles y crear soluciones que realmente aporten valor — sea una app, un dashboard o un agente automatizado.",
     ],
   },
   en: {
     title: "About me",
-    subtitle: "Software Engineering student with real-world experience in web development, technical leadership, and project management.",
+    subtitle: "Software Engineer with real-world experience building products: web, mobile, data, and AI automation.",
     paragraphs: [
-      "I have worked building modern web applications for government entities such as DIAN, healthcare companies, and freelance clients, actively participating throughout the entire software lifecycle.",
-      "My experience as a Full Stack Developer, Project Manager, and QA allows me to have a comprehensive view of projects, make better technical decisions, and deliver more robust products.",
-      "I focus on writing clean code, building maintainable architectures, and creating solutions that truly add value to both the business and the end user.",
+      "I'm a Software Engineer with 4+ years of technical experience, building software for government entities like DIAN, healthcare companies, and freelance clients — involved in the full product lifecycle, end to end.",
+      "I work full stack with React, Next.js, and Node/NestJS, but I don't stop there: I build native apps for iOS (Swift, SwiftUI, Xcode) and Android (Kotlin, Java, Android Studio), design dashboards and data analysis with Power BI, and automate business processes with AI agents. I solve each problem with whatever tool actually fits it, without boxing myself into a single stack.",
+      "My time in Project Manager and QA roles gives me a comprehensive view: I understand the business, coordinate teams, and also test what I build. That mix is what lets me make better technical decisions and deliver more solid products.",
+      "I focus on writing clean code, building maintainable architectures, and creating solutions that truly add value — whether that's an app, a dashboard, or an automated agent.",
     ],
   },
 };

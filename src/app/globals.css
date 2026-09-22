@@ -1,38 +1,288 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
 /* =========================
-   Design Tokens
+   Design Tokens — glass/ambient-glow system, blue-integrated
+   (see .claude/skills/portfolio-design-system)
    ========================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --canvas: #05070d;
+  --surface-1: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.07);
+  --hairline: rgba(255, 255, 255, 0.09);
+  --hairline-strong: rgba(255, 255, 255, 0.18);
 
-  --card: #f8fafc;
-  --border: #e5e7eb;
+  --ink: #f3f5f9;
+  --ink-muted: #a3a8b5;
+  --ink-subtle: #7d8290;
+  --ink-tertiary: #5b606c;
 
-  --primary: #2563eb;
-  --secondary: #22c55e;
+  --accent: #2f9bff;
+  --accent-hover: #55b0ff;
+  --accent-soft: rgba(47, 155, 255, 0.16);
+
+  --glow-blue: #2f6bff;
+  --glow-cyan: #22d3ee;
+  --glow-violet: #7c5cff;
+
+  --success: #22c55e;
+
+  color-scheme: dark;
 }
 
-/* Dark mode */
-.dark {
-  --background: #020617;
-  --foreground: #e5e7eb;
+:root[data-theme="light"] {
+  --canvas: #eef1f6;
+  --surface-1: rgba(255, 255, 255, 0.62);
+  --surface-2: rgba(255, 255, 255, 0.85);
+  --hairline: rgba(15, 23, 42, 0.09);
+  --hairline-strong: rgba(15, 23, 42, 0.18);
 
-  --card: #0b112a;
-  --border: #1e293b;
+  --ink: #14171f;
+  --ink-muted: #565c6c;
+  --ink-subtle: #6d7285;
+  --ink-tertiary: #8b90a0;
 
-  --primary: #60a5fa;
-  --secondary: #4ade80;
+  --accent: #0072d6;
+  --accent-hover: #0086f5;
+  --accent-soft: rgba(0, 114, 214, 0.1);
+
+  --glow-blue: #6fa8ff;
+  --glow-cyan: #67e2f5;
+  --glow-violet: #b3a3ff;
+
+  --success: #158a43;
+
+  color-scheme: light;
 }
 
 /* =========================
    Base styles
    ========================= */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--canvas);
+  color: var(--ink);
   font-feature-settings: "rlig" 1, "calt" 1;
+  transition: background-color 300ms ease-out, color 300ms ease-out;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 9999px;
+  border: 2px solid var(--canvas);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hairline-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =========================
+   Typography scale — aggressive negative tracking, clamp = fluid
+   ========================= */
+
+.text-display-xxl {
+  font-size: clamp(2.5rem, 1.2rem + 6.5vw, 6rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+.text-display-xl {
+  font-size: clamp(1.875rem, 1.1rem + 3.9vw, 4rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.text-display-lg {
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+.text-display-md {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.text-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* =========================
+   Scroll reveal (IntersectionObserver-driven, see components/ui/Reveal.js)
+   ========================= */
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================
+   Ambient glow background (components/ui/AmbientGlow.js)
+   Fixed, page-wide, behind every section — this is what makes the
+   header/cards/sections read as ONE integrated surface instead of
+   flat black boxes. Cards sit on top as translucent glass (see .glass).
+   ========================= */
+
+.ambient-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.ambient-glow > span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  opacity: 0.35;
+}
+:root[data-theme="light"] .ambient-glow > span {
+  opacity: 0.4;
+}
+
+/* =========================
+   Glass surfaces — translucent, sits over the ambient glow.
+   Backdrop blur only where it earns its cost (see .glass).
+   ========================= */
+
+.glass {
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.card-hover {
+  transition: transform 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  background-color: var(--surface-2);
+  border-color: var(--hairline-strong);
+}
+
+/* =========================
+   Buttons — pill shape, blue fill (integrated with the rest of the UI,
+   not a stark white-on-black contrast).
+   ========================= */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--accent);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 150ms ease-out, transform 150ms ease-out;
+}
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.03);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--surface-1);
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 150ms ease-out;
+}
+.btn-secondary:hover {
+  background-color: var(--surface-2);
+  border-color: var(--hairline-strong);
+  transform: scale(1.03);
+}
+
+/* =========================
+   Featured glass card — the 3 "moment" cards (Hero experience,
+   Projects GitHub CTA, Contact CTA). Blue/cyan glow instead of the
+   old off-brand purple gradient fills.
+   ========================= */
+
+.glow-card {
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid var(--hairline-strong);
+  background: linear-gradient(160deg, rgba(47, 107, 255, 0.16), rgba(34, 211, 238, 0.08));
+  overflow: hidden;
+}
+
+/* =========================
+   Theme toggle — circle-blur reveal via the View Transitions API.
+   See components/ui/ThemeToggle.js. Falls back to an instant swap
+   where the API (or the transition pseudo-elements) aren't supported.
+   ========================= */
+
+::view-transition-old(theme-reveal),
+::view-transition-new(theme-reveal) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

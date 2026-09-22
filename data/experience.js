@@ -1,6 +1,30 @@
 export const experience = [
   {
     role: {
+      es: "Ingeniero de Software (Prácticas Profesionales)",
+      en: "Software Engineer (Professional Internship)",
+    },
+    company: "Servicios Asociados",
+    period: "Mar 2026 - Sep 2026",
+    description: {
+      es: "Desarrollo de soluciones tecnológicas y automatización de procesos de negocio mediante agentes de IA y programas automatizados, aplicando buenas prácticas de ingeniería de software.",
+      en: "Development of technology solutions and business process automation using AI agents and automated programs, applying software engineering best practices.",
+    },
+    achievements: {
+      es: [
+        "Automatización de procesos con agentes de IA",
+        "Desarrollo de soluciones tecnológicas a medida",
+        "Programas automatizados para tareas repetitivas",
+      ],
+      en: [
+        "Process automation with AI agents",
+        "Custom technology solutions development",
+        "Automated programs for repetitive tasks",
+      ],
+    },
+  },
+  {
+    role: {
       es: "Desarrollador Full Stack / Project Manager",
       en: "Full Stack Developer / Project Manager",
     },

@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="pt-20 min-h-screen">
+      <main className="pt-16 min-h-screen">
         <Hero />
         <About />
         <Skills />
@@ -23,18 +23,6 @@ export default function Home() {
         <Education />
         <Certifications />
         <Contact />
-        {/* 
-        
-        
-        
-        
-        
-        
-        
-        
-          */}
-
- 
       </main>
       <Footer />  
     </>

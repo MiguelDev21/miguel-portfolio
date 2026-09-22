@@ -1,3 +1,80 @@
+// Certificaciones técnicas — Anthropic Academy (credential-showcase skill)
+export const technicalCertifications = [
+  {
+    slug: "claude-code-in-action",
+    title: {
+      es: "Claude Code in Action",
+      en: "Claude Code in Action",
+    },
+    issuer: "Anthropic Academy",
+    date: "Marzo 2026",
+    dateEn: "March 2026",
+    pdf: "/certifications/certificate-eugnbxxsxjqd-1772491233.pdf",
+    preview: "/certifications/previews/claude-code-in-action.jpg",
+    verifyUrl: "https://verify.skilljar.com/c/eugnbxxsxjqd",
+    credentialId: "eugnbxxsxjqd",
+    description: {
+      es: "Uso avanzado de Claude Code para flujos de desarrollo agénticos: automatización, refactors guiados y trabajo multi-archivo.",
+      en: "Advanced use of Claude Code for agentic development workflows: automation, guided refactors, and multi-file work.",
+    },
+  },
+  {
+    slug: "claude-101",
+    title: {
+      es: "Claude 101",
+      en: "Claude 101",
+    },
+    issuer: "Anthropic Academy",
+    date: null,
+    dateEn: null,
+    pdf: "/certifications/certificate-hnxn8yiktuce-1773696427.pdf",
+    preview: "/certifications/previews/claude-101.jpg",
+    verifyUrl: null,
+    credentialId: "hnxn8yiktuce",
+    description: {
+      es: "Fundamentos de los modelos Claude: capacidades, prompting efectivo y buenas prácticas de uso.",
+      en: "Fundamentals of Claude models: capabilities, effective prompting, and usage best practices.",
+    },
+  },
+  {
+    slug: "ai-fluency",
+    title: {
+      es: "AI Fluency: Framework & Foundations",
+      en: "AI Fluency: Framework & Foundations",
+    },
+    issuer: "Anthropic Academy",
+    coBadged: "UCC · Ringling College of Art + Design · HEA · National Forum",
+    date: null,
+    dateEn: null,
+    pdf: "/certifications/certificate-z62bkgamob7g-1790102224.pdf",
+    preview: "/certifications/previews/ai-fluency.jpg",
+    verifyUrl: null,
+    credentialId: "z62bkgamob7g",
+    description: {
+      es: "Marco de fluidez en IA: cómo evaluar, delegar y colaborar con sistemas de IA de forma crítica y responsable.",
+      en: "AI fluency framework: how to critically and responsibly evaluate, delegate to, and collaborate with AI systems.",
+    },
+  },
+];
+
+// Test de inglés — widget dedicado (credential-showcase skill)
+export const englishTest = {
+  level: "B1",
+  cefrLevels: ["A1", "A2", "B1", "B2", "C1", "C2"],
+  date: "13 Feb 2026",
+  pdf: "/certifications/test_ingles_427.pdf",
+  preview: "/certifications/previews/english-b1.jpg",
+  courseRecommendation: {
+    es: "Elementary English for Business Purposes (A2)",
+    en: "Elementary English for Business Purposes (A2)",
+  },
+  description: {
+    es: "Puede intercambiar información e ideas en discusiones de trabajo, describir experiencias y eventos, y dar razones y explicaciones breves de opiniones y planes.",
+    en: "Can exchange information and ideas in workplace discussions, describe experiences and events, and briefly give reasons and explanations for opinions and plans.",
+  },
+};
+
+// Formación académica y reconocimientos
 export const certifications = [
   {
     title: {
@@ -149,6 +226,10 @@ export const certificationTypes = {
 // Estadísticas de certificaciones
 export const certificationStats = {
   es: {
+    technical: {
+      value: "3",
+      label: "Certificaciones técnicas (Anthropic)",
+    },
     academic: {
       value: "2",
       label: "Títulos académicos",
@@ -163,6 +244,10 @@ export const certificationStats = {
     },
   },
   en: {
+    technical: {
+      value: "3",
+      label: "Technical certifications (Anthropic)",
+    },
     academic: {
       value: "2",
       label: "Academic degrees",
