@@ -264,6 +264,24 @@ body {
 }
 
 /* =========================
+   Theme toggle icon — visibility decided by CSS off data-theme, not by
+   React state, so the correct icon paints on the very first frame (see
+   components/ui/ThemeToggle.js for why: this dodges a hydration mismatch
+   that would otherwise happen since SSR can't know the visitor's stored
+   theme preference).
+   ========================= */
+
+.theme-icon-moon {
+  display: none;
+}
+:root[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+:root[data-theme="light"] .theme-icon-moon {
+  display: block;
+}
+
+/* =========================
    Theme toggle — circle-blur reveal via the View Transitions API.
    See components/ui/ThemeToggle.js. Falls back to an instant swap
    where the API (or the transition pseudo-elements) aren't supported.

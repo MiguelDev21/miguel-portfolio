@@ -97,19 +97,20 @@ export default function Header() {
           <a
             href={siteConfig.cv[lang]}
             download
-            className="btn-primary hidden sm:inline-flex py-2! px-4!"
+            className="btn-primary py-2! px-2.5! sm:px-4!"
+            aria-label={lang === "es" ? "Descargar CV" : "Download CV"}
           >
             <Icon name="download" className="w-4 h-4" />
-            <span>CV</span>
+            <span className="hidden sm:inline">CV</span>
           </a>
 
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-mono font-medium rounded-full border border-(--hairline) text-(--ink-muted) hover:text-(--ink) hover:border-(--hairline-strong) transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 text-xs font-mono font-medium rounded-full border border-(--hairline) text-(--ink-muted) hover:text-(--ink) hover:border-(--hairline-strong) transition-colors cursor-pointer"
             aria-label={lang === "es" ? "Switch to English" : "Cambiar a Español"}
           >
             <span aria-hidden="true">{lang === "es" ? "🇺🇸" : "🇪🇸"}</span>
-            {lang === "es" ? "EN" : "ES"}
+            <span className="hidden sm:inline">{lang === "es" ? "EN" : "ES"}</span>
           </button>
 
           <ThemeToggle />

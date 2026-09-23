@@ -67,8 +67,8 @@ export const languages = {
     },
     {
       language: "Inglés",
-      level: "Intermedio (B1)",
-      proficiency: 60,
+      level: "Básico-Intermedio (A2)",
+      proficiency: 40,
     },
   ],
   en: [
@@ -79,8 +79,8 @@ export const languages = {
     },
     {
       language: "English",
-      level: "Intermediate (B1)",
-      proficiency: 60,
+      level: "Elementary (A2)",
+      proficiency: 40,
     },
   ],
 };

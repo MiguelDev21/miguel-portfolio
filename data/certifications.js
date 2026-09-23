@@ -59,18 +59,18 @@ export const technicalCertifications = [
 
 // Test de inglés — widget dedicado (credential-showcase skill)
 export const englishTest = {
-  level: "B1",
+  level: "A2",
   cefrLevels: ["A1", "A2", "B1", "B2", "C1", "C2"],
   date: "13 Feb 2026",
   pdf: "/certifications/test_ingles_427.pdf",
-  preview: "/certifications/previews/english-b1.jpg",
+  preview: "/certifications/previews/english-a2.jpg",
   courseRecommendation: {
     es: "Elementary English for Business Purposes (A2)",
     en: "Elementary English for Business Purposes (A2)",
   },
   description: {
-    es: "Puede intercambiar información e ideas en discusiones de trabajo, describir experiencias y eventos, y dar razones y explicaciones breves de opiniones y planes.",
-    en: "Can exchange information and ideas in workplace discussions, describe experiences and events, and briefly give reasons and explanations for opinions and plans.",
+    es: "Puede comunicarse con expresiones de negocio conocidas y tareas laborales simples y rutinarias que requieren un intercambio de información directo y sencillo en el lugar de trabajo. Puede describir en términos simples su experiencia laboral y asuntos inmediatos del trabajo.",
+    en: "Can communicate using familiar business expressions and simple, routine job tasks requiring a direct and simple exchange of information in the workplace. Can describe in simple terms past job experience and immediate workplace matters.",
   },
 };
 

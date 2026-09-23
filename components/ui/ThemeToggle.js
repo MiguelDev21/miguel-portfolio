@@ -67,7 +67,15 @@ export default function ThemeToggle({ className = "" }) {
           : "Switch to dark mode"
       }
     >
-      <Icon name={theme === "dark" ? "sun" : "moon"} className="w-4 h-4" />
+      {/* Both icons always render (identical on server and client — no
+          hydration mismatch); which one is visible is decided purely by
+          CSS off the `data-theme` attribute the flash-prevention script
+          sets before React ever loads, so the correct icon shows on the
+          very first paint instead of only after the effect above runs. */}
+      <span className="relative w-4 h-4 block">
+        <Icon name="sun" className="theme-icon-sun absolute inset-0 w-4 h-4" />
+        <Icon name="moon" className="theme-icon-moon absolute inset-0 w-4 h-4" />
+      </span>
     </button>
   );
 }
