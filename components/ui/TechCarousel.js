@@ -96,7 +96,7 @@ export default function TechCarousel({ items }) {
   return (
     <div
       ref={containerRef}
-      className="relative mt-4 h-10 overflow-hidden"
+      className="relative mt-4 h-10 w-full min-w-0 overflow-hidden"
       style={{
         WebkitMaskImage: "linear-gradient(90deg, transparent, black 16%, black 84%, transparent)",
         maskImage: "linear-gradient(90deg, transparent, black 16%, black 84%, transparent)",

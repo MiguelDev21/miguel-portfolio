@@ -264,6 +264,40 @@ body {
 }
 
 /* =========================
+   Flip-card 3D (components/ui/FlipCard.js) — declared here as real CSS
+   classes, not inline React styles, so the build's CSS pipeline can add
+   the -webkit- prefixes mobile Safari needs for backface-visibility and
+   transform-style. Inline `style={{}}` objects never get autoprefixed,
+   which is why the back face could fail to hide on iOS and show the
+   front content mirrored instead of the detail side. `translateZ(0)`
+   forces its own GPU layer so the rotation stays smooth instead of
+   falling back to software compositing mid-drag.
+   ========================= */
+
+.flip-perspective {
+  perspective: 1600px;
+  -webkit-perspective: 1600px;
+}
+
+.flip-card-inner {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+  transform: translateZ(0) rotateY(var(--flip-angle, 0deg));
+  -webkit-transform: translateZ(0) rotateY(var(--flip-angle, 0deg));
+}
+
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-face-back {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+/* =========================
    Flip-card hint — nudges the icon side to side so the "flip the card"
    affordance reads as interactive (components/ui/FlipCard.js).
    ========================= */

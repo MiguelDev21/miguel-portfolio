@@ -8,13 +8,18 @@ import { useCallback, useRef, useState } from "react";
 // snap programmatically, in 180deg steps, so a button click and a manual
 // drag land in the same place. Direct DOM write during drag (no re-render
 // per pointer move) — same rAF pattern as Tilt.js / Parallax.js.
-const DEG_PER_PX = 0.5;
-const SNAP_MS = 500;
+//
+// The 3D transform functions themselves (perspective/preserve-3d/backface-
+// visibility) live in globals.css as .flip-perspective/.flip-card-inner/
+// .flip-face, not inline styles — mobile Safari needs -webkit- prefixes on
+// those to hide the back face correctly, and inline React styles are never
+// autoprefixed. Only the live angle (--flip-angle) is set from here.
+const DEG_PER_PX = 0.65;
+const SNAP_MS = 450;
 
 export default function FlipCard({ front, back, className = "" }) {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
-  const rafRef = useRef(null);
   const dragging = useRef(false);
   const dragStartX = useRef(0);
   const baseAngle = useRef(0);
@@ -24,7 +29,7 @@ export default function FlipCard({ front, back, className = "" }) {
   const [restAngle, setRestAngle] = useState(0);
 
   const paint = useCallback((deg) => {
-    if (cardRef.current) cardRef.current.style.transform = `rotateY(${deg}deg)`;
+    if (cardRef.current) cardRef.current.style.setProperty("--flip-angle", `${deg}deg`);
   }, []);
 
   const onPointerDown = useCallback(
@@ -45,8 +50,7 @@ export default function FlipCard({ front, back, className = "" }) {
     (e) => {
       if (!dragging.current) return;
       liveAngle.current = baseAngle.current + (e.clientX - dragStartX.current) * DEG_PER_PX;
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => paint(liveAngle.current));
+      paint(liveAngle.current);
     },
     [paint]
   );
@@ -54,7 +58,6 @@ export default function FlipCard({ front, back, className = "" }) {
   const endDrag = useCallback(() => {
     if (!dragging.current) return;
     dragging.current = false;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     setIsDragging(false);
     setRestAngle(Math.round(liveAngle.current / 180) * 180);
   }, []);
@@ -65,8 +68,8 @@ export default function FlipCard({ front, back, className = "" }) {
   return (
     <div
       ref={wrapRef}
-      className={`relative ${className}`}
-      style={{ perspective: 1600, touchAction: "pan-y" }}
+      className={`relative min-w-0 select-none flip-perspective ${className}`}
+      style={{ touchAction: "pan-y", WebkitTapHighlightColor: "transparent" }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
@@ -74,25 +77,21 @@ export default function FlipCard({ front, back, className = "" }) {
     >
       <div
         ref={cardRef}
-        className="grid h-full select-none"
+        className="relative min-w-0 flip-card-inner"
         style={{
-          transformStyle: "preserve-3d",
-          transform: `rotateY(${restAngle}deg)`,
+          "--flip-angle": `${restAngle}deg`,
           transition: isDragging ? "none" : `transform ${SNAP_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
           cursor: isDragging ? "grabbing" : "grab",
         }}
       >
-        <div
-          className="[grid-area:1/1] h-full"
-          style={{ backfaceVisibility: "hidden" }}
-          aria-hidden={flipped}
-          inert={flipped}
-        >
+        {/* Front stays in normal flow — it defines the card's height. */}
+        <div className="min-w-0 flip-face" aria-hidden={flipped} inert={flipped}>
           {typeof front === "function" ? front({ flipped, flip }) : front}
         </div>
+        {/* Back overlays it exactly, and scrolls internally if its content
+            (role/solution/description) runs taller than the front. */}
         <div
-          className="[grid-area:1/1] h-full"
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className="absolute inset-0 h-full min-w-0 flip-face flip-face-back"
           aria-hidden={!flipped}
           inert={!flipped}
         >

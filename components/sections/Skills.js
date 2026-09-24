@@ -63,7 +63,7 @@ export default function Skills() {
           <Reveal
             key={category}
             delay={index * 60}
-            className="rounded-2xl border border-(--hairline) glass bg-(--surface-1) p-6 card-hover"
+            className="min-w-0 rounded-2xl border border-(--hairline) glass bg-(--surface-1) p-6 card-hover"
           >
             <div className="flex items-center gap-2 mb-4">
               <Icon name={categoryIcons[category] || "code"} className="w-4 h-4 text-(--accent)" />

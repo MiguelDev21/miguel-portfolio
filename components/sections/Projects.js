@@ -238,7 +238,7 @@ export default function Projects() {
                 {list.map((project) => {
                   const key = `${project.type}-${project.title.en}`;
                   return (
-                    <Reveal key={key}>
+                    <Reveal key={key} className="min-w-0">
                       <ProjectCard project={project} lang={lang} />
                     </Reveal>
                   );
@@ -252,7 +252,7 @@ export default function Projects() {
           {filteredProjects.map((project) => {
             const key = `${project.type}-${project.title.en}`;
             return (
-              <Reveal key={key}>
+              <Reveal key={key} className="min-w-0">
                 <ProjectCard project={project} lang={lang} />
               </Reveal>
             );
