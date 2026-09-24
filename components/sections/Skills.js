@@ -2,8 +2,10 @@
 
 import { useLanguage } from "../../context/LanguageContext";
 import { skills, expertise } from "../../data/skills";
+import { resolveTechIcon } from "../../data/techIcons";
 import Reveal from "../ui/Reveal";
 import Icon from "../ui/Icon";
+import TechCarousel from "../ui/TechCarousel";
 
 const categoryIcons = {
   frontend: "code",
@@ -78,6 +80,8 @@ export default function Skills() {
                 </span>
               ))}
             </div>
+
+            <TechCarousel items={data.items.map(resolveTechIcon).filter(Boolean)} />
           </Reveal>
         ))}
       </div>

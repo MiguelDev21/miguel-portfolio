@@ -264,6 +264,20 @@ body {
 }
 
 /* =========================
+   Flip-card hint — nudges the icon side to side so the "flip the card"
+   affordance reads as interactive (components/ui/FlipCard.js).
+   ========================= */
+
+@keyframes hint-wiggle {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+.hint-wiggle {
+  animation: hint-wiggle 1.8s ease-in-out infinite;
+}
+
+/* =========================
    Theme toggle icon — visibility decided by CSS off data-theme, not by
    React state, so the correct icon paints on the very first frame (see
    components/ui/ThemeToggle.js for why: this dodges a hydration mismatch

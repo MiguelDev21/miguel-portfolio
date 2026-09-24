@@ -11,151 +11,162 @@ import {
 import Reveal from "../ui/Reveal";
 import Icon from "../ui/Icon";
 import ProjectVisual from "../ui/ProjectVisual";
-import Tilt from "../ui/Tilt";
+import FlipCard from "../ui/FlipCard";
 
-function ProjectCard({ project, lang, isOpen, onToggle }) {
+function ProjectCard({ project, lang }) {
   const title = project.title[lang];
   const hasLinks = project.github || project.demo;
 
   return (
-    <Tilt max={3} className="h-full">
-    <article className="h-full rounded-[20px] border border-(--hairline) glass bg-(--surface-1) overflow-hidden card-hover">
-      <div className="p-6">
-        <ProjectVisual category={project.category} label={project.stack[0]} />
+    <FlipCard
+      className="h-full"
+      front={({ flip }) => (
+        <article className="h-full flex flex-col rounded-[20px] border border-(--hairline) glass bg-(--surface-1) overflow-hidden card-hover">
+          <div className="p-6 flex-1 flex flex-col">
+            <ProjectVisual category={project.category} label={project.stack[0]} />
 
-        {/* Eyebrow + links */}
-        <div className="mt-5 flex items-start justify-between gap-3">
-          <p className="text-eyebrow text-(--ink-subtle) flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-(--accent)" />
-            {project.type}
-          </p>
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-(--ink-tertiary) hover:text-(--ink) transition-colors"
-              aria-label={lang === "es" ? "Ver en GitHub" : "View on GitHub"}
-            >
-              <Icon name="github" className="w-4.5 h-4.5" />
-            </a>
-          )}
-        </div>
+            {/* Eyebrow + links */}
+            <div className="mt-5 flex items-start justify-between gap-3">
+              <p className="text-eyebrow text-(--ink-subtle) flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-(--accent)" />
+                {project.type}
+              </p>
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-(--ink-tertiary) hover:text-(--ink) transition-colors"
+                  aria-label={lang === "es" ? "Ver en GitHub" : "View on GitHub"}
+                >
+                  <Icon name="github" className="w-4.5 h-4.5" />
+                </a>
+              )}
+            </div>
 
-        {/* Title + impact */}
-        <h3 className="mt-3 text-lg font-semibold text-(--ink)">{title}</h3>
-        <p className="mt-2 text-sm text-(--ink-muted) leading-relaxed">
-          {project.impact[lang]}
-        </p>
-
-        {/* Stack */}
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.stack.slice(0, 5).map((tech) => (
-            <span
-              key={tech}
-              className="font-mono text-[11px] px-2 py-1 rounded glass bg-(--surface-2) text-(--ink-muted)"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Actions row */}
-        <div className="mt-5 flex items-center justify-between">
-          <button
-            onClick={onToggle}
-            className="flex items-center gap-1.5 text-sm font-medium text-(--accent) hover:text-(--accent-hover) transition-colors"
-            aria-expanded={isOpen}
-          >
-            {isOpen
-              ? lang === "es"
-                ? "Ocultar detalle"
-                : "Hide detail"
-              : lang === "es"
-              ? "Ver detalle"
-              : "View detail"}
-            <Icon
-              name="chevronDown"
-              className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-
-          {!hasLinks ? (
-            <span className="text-[11px] font-mono px-2 py-1 rounded glass bg-(--surface-2) text-(--ink-tertiary)">
-              {lang === "es" ? "Privado" : "Private"}
-            </span>
-          ) : (
-            project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-medium text-(--ink-subtle) hover:text-(--ink) transition-colors"
-              >
-                <Icon name="externalLink" className="w-3.5 h-3.5" />
-                Demo
-              </a>
-            )
-          )}
-        </div>
-      </div>
-
-      {/* Expanded detail */}
-      {isOpen && (
-        <div className="border-t border-(--hairline) glass bg-(--surface-2) p-6 space-y-4">
-          <div>
-            <p className="text-eyebrow text-(--ink-subtle) mb-1.5">
-              {lang === "es" ? "Mi rol" : "My role"}
+            {/* Title + impact */}
+            <h3 className="mt-3 text-lg font-semibold text-(--ink)">{title}</h3>
+            <p className="mt-2 text-sm text-(--ink-muted) leading-relaxed">
+              {project.impact[lang]}
             </p>
-            <p className="text-sm text-(--ink)">{project.role[lang]}</p>
-          </div>
 
-          <div>
-            <p className="text-eyebrow text-(--ink-subtle) mb-1.5">
-              {lang === "es" ? "Solución" : "Solution"}
-            </p>
-            <ul className="space-y-1.5">
-              {project.highlights[lang].map((h, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-(--ink-muted)">
-                  <Icon name="checkSimple" className="w-3.5 h-3.5 text-(--accent) shrink-0 mt-1" />
-                  <span>{h}</span>
-                </li>
+            {/* Stack */}
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {project.stack.slice(0, 5).map((tech) => (
+                <span
+                  key={tech}
+                  className="font-mono text-[11px] px-2 py-1 rounded glass bg-(--surface-2) text-(--ink-muted)"
+                >
+                  {tech}
+                </span>
               ))}
-            </ul>
+            </div>
+
+            <div className="flex-1" />
+
+            {/* Actions row */}
+            <div className="mt-5 flex items-center justify-between">
+              <button
+                onClick={flip}
+                className="flex items-center gap-1.5 text-sm font-medium text-(--accent) hover:text-(--accent-hover) transition-colors"
+              >
+                {lang === "es" ? "Ver detalle" : "View detail"}
+                <Icon name="rotate" className="w-3.5 h-3.5" />
+              </button>
+
+              {!hasLinks ? (
+                <span className="text-[11px] font-mono px-2 py-1 rounded glass bg-(--surface-2) text-(--ink-tertiary)">
+                  {lang === "es" ? "Privado" : "Private"}
+                </span>
+              ) : (
+                project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-medium text-(--ink-subtle) hover:text-(--ink) transition-colors"
+                  >
+                    <Icon name="externalLink" className="w-3.5 h-3.5" />
+                    Demo
+                  </a>
+                )
+              )}
+            </div>
+
+            {/* Flip hint */}
+            <p className="mt-3 flex items-center gap-1.5 text-[11px] text-(--ink-tertiary)">
+              <Icon name="rotate" className="w-3 h-3 hint-wiggle" />
+              {lang === "es" ? "Gira la tarjeta para ver más" : "Flip the card for more"}
+            </p>
+          </div>
+        </article>
+      )}
+      back={({ flip }) => (
+        <article className="h-full flex flex-col rounded-[20px] border border-(--hairline) glass bg-(--surface-2) overflow-hidden card-hover p-6">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-base font-semibold text-(--ink)">{title}</h3>
+            <button
+              onClick={flip}
+              className="flex items-center gap-1.5 text-sm font-medium text-(--accent) hover:text-(--accent-hover) transition-colors shrink-0"
+            >
+              <Icon name="rotate" className="w-3.5 h-3.5" />
+              {lang === "es" ? "Volver" : "Back"}
+            </button>
           </div>
 
-          {project.stack.length > 5 && (
+          <div className="mt-4 space-y-4 overflow-y-auto">
             <div>
               <p className="text-eyebrow text-(--ink-subtle) mb-1.5">
-                {lang === "es" ? "Stack completo" : "Full stack"}
+                {lang === "es" ? "Mi rol" : "My role"}
               </p>
-              <div className="flex flex-wrap gap-1.5">
-                {project.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="font-mono text-[11px] px-2 py-1 rounded glass bg-(--surface-1) text-(--ink-muted)"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              <p className="text-sm text-(--ink)">{project.role[lang]}</p>
             </div>
-          )}
 
-          <p className="text-sm text-(--ink-subtle) leading-relaxed pt-1">
-            {project.description[lang]}
-          </p>
-        </div>
+            <div>
+              <p className="text-eyebrow text-(--ink-subtle) mb-1.5">
+                {lang === "es" ? "Solución" : "Solution"}
+              </p>
+              <ul className="space-y-1.5">
+                {project.highlights[lang].map((h, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-sm text-(--ink-muted)">
+                    <Icon name="checkSimple" className="w-3.5 h-3.5 text-(--accent) shrink-0 mt-1" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {project.stack.length > 5 && (
+              <div>
+                <p className="text-eyebrow text-(--ink-subtle) mb-1.5">
+                  {lang === "es" ? "Stack completo" : "Full stack"}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-[11px] px-2 py-1 rounded glass bg-(--surface-1) text-(--ink-muted)"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <p className="text-sm text-(--ink-subtle) leading-relaxed pt-1">
+              {project.description[lang]}
+            </p>
+          </div>
+        </article>
       )}
-    </article>
-    </Tilt>
+    />
   );
 }
 
 export default function Projects() {
   const { lang } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("all");
-  const [openKey, setOpenKey] = useState(null);
   const categories = projectCategories[lang];
   const groupLabels = projectGroupLabels[lang];
 
@@ -178,8 +189,6 @@ export default function Projects() {
     return [...map.entries()].filter(([, list]) => list.length > 0);
   }, [activeCategory]);
 
-  const toggle = (key) => setOpenKey((prev) => (prev === key ? null : key));
-
   return (
     <section id="projects" className="relative max-w-7xl mx-auto px-4 py-20 md:py-24">
       <Reveal className="max-w-2xl">
@@ -192,8 +201,8 @@ export default function Projects() {
         </h2>
         <p className="mt-4 text-sm md:text-base text-(--ink-subtle)">
           {lang === "es"
-            ? "Proyectos profesionales y personales, agrupados por relevancia. Cada tarjeta se expande con el problema, mi rol y la solución."
-            : "Professional and personal projects, grouped by relevance. Each card expands with the problem, my role, and the solution."}
+            ? "Proyectos profesionales y personales, agrupados por relevancia. Gira cada tarjeta para ver mi rol y la solución."
+            : "Professional and personal projects, grouped by relevance. Flip each card to see my role and the solution."}
         </p>
       </Reveal>
 
@@ -202,10 +211,7 @@ export default function Projects() {
         {Object.entries(categories).map(([key, label]) => (
           <button
             key={key}
-            onClick={() => {
-              setActiveCategory(key);
-              setOpenKey(null);
-            }}
+            onClick={() => setActiveCategory(key)}
             className={`px-3.5 py-1.5 text-sm font-medium rounded-full transition-colors ${
               activeCategory === key
                 ? "glass bg-(--surface-2) text-(--ink) border border-(--hairline-strong)"
@@ -233,12 +239,7 @@ export default function Projects() {
                   const key = `${project.type}-${project.title.en}`;
                   return (
                     <Reveal key={key}>
-                      <ProjectCard
-                        project={project}
-                        lang={lang}
-                        isOpen={openKey === key}
-                        onToggle={() => toggle(key)}
-                      />
+                      <ProjectCard project={project} lang={lang} />
                     </Reveal>
                   );
                 })}
@@ -252,12 +253,7 @@ export default function Projects() {
             const key = `${project.type}-${project.title.en}`;
             return (
               <Reveal key={key}>
-                <ProjectCard
-                  project={project}
-                  lang={lang}
-                  isOpen={openKey === key}
-                  onToggle={() => toggle(key)}
-                />
+                <ProjectCard project={project} lang={lang} />
               </Reveal>
             );
           })}

@@ -122,15 +122,29 @@ export const certifications = [
   },
   {
     title: {
-      es: "Primer Puesto Hackathon - Solución Problemática Social",
-      en: "First Place Hackathon - Social Problem Solution",
+      es: "Segundo Puesto — II Hackathon, Solución Problemática Social",
+      en: "Second Place — II Hackathon, Social Problem Solution",
     },
     institution: "Fundación Escuela Tecnológica de Neiva",
     date: "Noviembre 2024",
     type: "award",
     description: {
-      es: "Reconocimiento por ocupar el primer puesto en el II Hackathon con una solución innovadora enfocada en problemática social. Encuentro de habilidades del programa de Ingeniería de Software.",
-      en: "Recognition for taking first place in the II Hackathon with an innovative solution focused on social issues. Software Engineering program skills meeting.",
+      es: "Reconocimiento por ocupar el segundo puesto en el II Hackathon con una solución innovadora enfocada en problemática social. Encuentro de habilidades del programa de Ingeniería de Software.",
+      en: "Recognition for taking second place in the II Hackathon with an innovative solution focused on social issues. Software Engineering program skills meeting.",
+    },
+    icon: "trophy",
+  },
+  {
+    title: {
+      es: "Primer Puesto — Hackathon Nivel 2",
+      en: "First Place — Hackathon Level 2",
+    },
+    institution: "Fundación Escuela Tecnológica de Neiva",
+    date: "2024",
+    type: "award",
+    description: {
+      es: "Reconocimiento por ocupar el primer puesto en el evento Hackathon Nivel 2 del programa de Ingeniería de Software, con beneficio de 10% de descuento en matrícula académica.",
+      en: "Recognition for taking first place in the Hackathon Level 2 event of the Software Engineering program, with a 10% academic tuition discount benefit.",
     },
     icon: "trophy",
   },
@@ -235,7 +249,7 @@ export const certificationStats = {
       label: "Títulos académicos",
     },
     awards: {
-      value: "2",
+      value: "3",
       label: "Premios y reconocimientos",
     },
     professional: {
@@ -253,7 +267,7 @@ export const certificationStats = {
       label: "Academic degrees",
     },
     awards: {
-      value: "2",
+      value: "3",
       label: "Awards and recognitions",
     },
     professional: {

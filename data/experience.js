@@ -4,7 +4,7 @@ export const experience = [
       es: "Ingeniero de Software (Prácticas Profesionales)",
       en: "Software Engineer (Professional Internship)",
     },
-    company: "Servicios Asociados",
+    company: "Servicios Asociados SAS",
     period: "Mar 2026 - Sep 2026",
     description: {
       es: "Desarrollo de soluciones tecnológicas y automatización de procesos de negocio mediante agentes de IA y programas automatizados, aplicando buenas prácticas de ingeniería de software.",
